@@ -89,7 +89,7 @@ $(".answer").on("click", function () {
         && numbers[2] == Math.min.apply(null, numbers)
         && text2.indexOf("低") == 0
     ){
-        console.log("OK");
+        alert("正解！");
         // 0 > > 2 > 1 の順番
     } else if (numbers[0] == Math.max.apply(null, numbers)
         && text0.indexOf("高") == 0
@@ -97,7 +97,7 @@ $(".answer").on("click", function () {
         && numbers[1] == Math.min.apply(null, numbers)
         && text1.indexOf("低") == 0
     ) {
-        console.log("OK");
+        alert("正解！");
         // 1 > > 0 > 2 の順番
     } else if (numbers[1] == Math.max.apply(null, numbers)
         && text1.indexOf("高") == 0
@@ -105,7 +105,7 @@ $(".answer").on("click", function () {
         && numbers[2] == Math.min.apply(null, numbers)
         && text2.indexOf("低") == 0
     ) {
-        console.log("OK");
+        alert("正解！");
         // 1 > > 2 > 0 の順番
     }else if (numbers[1] == Math.max.apply(null, numbers)
         && text1.indexOf("高") == 0
@@ -113,7 +113,7 @@ $(".answer").on("click", function () {
         && numbers[0] == Math.min.apply(null, numbers)
         && text0.indexOf("低") == 0
     ) {
-        console.log("OK");
+        alert("正解！");
         // 2 > > 0 > 1 の順番
     }else if (numbers[2] == Math.max.apply(null, numbers)
         && text2.indexOf("高") == 0
@@ -121,7 +121,7 @@ $(".answer").on("click", function () {
         && numbers[1] == Math.min.apply(null, numbers)
         && text1.indexOf("低") == 0
     ) {
-        console.log("OK");
+        alert("正解！");
         // 2 > > 1 > 0 の順番
     }else if (numbers[2] == Math.max.apply(null, numbers)
         && text2.indexOf("高") == 0
@@ -129,9 +129,9 @@ $(".answer").on("click", function () {
         && numbers[0] == Math.min.apply(null, numbers)
         && text0.indexOf("低") == 0
     ) {
-        console.log("OK");
+        alert("正解！");
         // 不正解
     } else {
-        console.log("NG");
+        alert("違います、、");
     }
-    });
+});
