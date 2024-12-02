@@ -42,7 +42,7 @@ async function getPokemonB(){
 function createPokemonA(pokemonA) {
     $(".image-1").html(`<img src="${pokemonA.sprites.front_default}">`);
     let heightA = pokemonA.height;
-    numbers.push(heightA);
+    numbers.unshift(heightA);
 };
 
 // pokemonBをimage-2に掲載、身長を格納
@@ -50,13 +50,11 @@ function createPokemonB(pokemonB) {
     $(".image-2").html(`<img src="${pokemonB.sprites.front_default}">`);
     $(".image-3").html(`<img src="./img/dedo.png"></img>`);
     let heightB = pokemonB.height;
-    numbers.push(heightB);
+    numbers.splice(1, 0, heightB);
     console.log(numbers);
-    // 高い順に並び替え
-    numbers.sort(function(a, b) {
-        return b - a;
-    });
-    console.log(numbers);
+    // 最大値を求める
+    console.log(Math.max.apply(null, numbers));
+    console.log(Math.min.apply(null,numbers))
 };
 
 // 高 → 中 → 低
@@ -78,7 +76,13 @@ $(".check-3").on("click", function () {
     $(".check-3").html(states[index]);
 });
 
+
 // 回答アクション
 $(".answer").on("click", function () {
-    
-});
+    if (numbers[0] == Math.max.apply(null, numbers)
+        && ".check-1".indexOf("高")) {
+        console.log("OK");
+    } else {
+        console.log("NO");
+    }
+    });
