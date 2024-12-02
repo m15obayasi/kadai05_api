@@ -36,6 +36,8 @@ header{
 .pokeTable,.checkTable{
     display: flex;
     justify-content: space-around;
+    border: solid 4px #def1ff;
+    margin-bottom: 10px;
 }
 
 .image-1, .image-2, .image-3{
@@ -49,10 +51,9 @@ header{
 }
 
 .checkTable{
-    margin-top: 5px;
     height: 40px;
     font-size: 40px;
-    
+
 }
 
 .check-1,.check-2,.check-3{
