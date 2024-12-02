@@ -40,7 +40,7 @@ header{
     margin-bottom: 10px;
 }
 
-.image-1, .image-2, .image-3{
+.image-0, .image-1, .image-2{
     margin: 20px;
 }
 
@@ -56,13 +56,13 @@ header{
 
 }
 
-.check-1,.check-2,.check-3{
+.check-0,.check-1,.check-2{
     text-align: center;
     height: 40px;
     line-height: 40px;
 }
 
-.check-1:hover,.check-2:hover,.check-3:hover {
+.check-0:hover,.check-1:hover,.check-2:hover {
     cursor: pointer;
     font-size: 60px;
 }

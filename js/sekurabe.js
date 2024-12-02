@@ -17,7 +17,7 @@ $(".contents").on("click", function () {
     getPokemonA();
 });
 
-// image-1用の関数
+// image-0用の関数
 async function getPokemonA(){
     const randomA = Math.floor(Math.random() * 99) + 1;
     const urlA = `https://pokeapi.co/api/v2/pokemon/${randomA}`;
@@ -28,7 +28,7 @@ async function getPokemonA(){
     getPokemonB();
 };
 
-// image-2用の関数
+// image-1用の関数
 async function getPokemonB(){
     const randomB = Math.floor(Math.random() * 199) + 100;
     const urlB = `https://pokeapi.co/api/v2/pokemon/${randomB}`;
@@ -38,26 +38,29 @@ async function getPokemonB(){
     createPokemonB(pokemonB);
 };
 
-// pokemonAをimage-1に掲載、身長を格納
+// pokemonAをimage-0に掲載、身長を格納
 function createPokemonA(pokemonA) {
-    $(".image-1").html(`<img src="${pokemonA.sprites.front_default}">`);
+    $(".image-0").html(`<img src="${pokemonA.sprites.front_default}">`);
     let heightA = pokemonA.height;
     numbers.unshift(heightA);
 };
 
-// pokemonBをimage-2に掲載、身長を格納
+// pokemonBをimage-1に掲載、身長を格納
 function createPokemonB(pokemonB) {
-    $(".image-2").html(`<img src="${pokemonB.sprites.front_default}">`);
-    $(".image-3").html(`<img src="./img/dedo.png"></img>`);
+    $(".image-1").html(`<img src="${pokemonB.sprites.front_default}">`);
+    $(".image-2").html(`<img src="./img/dedo.png"></img>`);
     let heightB = pokemonB.height;
     numbers.splice(1, 0, heightB);
     console.log(numbers);
-    // 最大値を求める
-    console.log(Math.max.apply(null, numbers));
-    console.log(Math.min.apply(null,numbers))
 };
 
 // 高 → 中 → 低
+$(".check-0").on("click", function () {
+    clickCount++;
+    const index = clickCount % states.length;
+    $(".check-0").html(states[index]);
+});
+
 $(".check-1").on("click", function () {
     clickCount++;
     const index = clickCount % states.length;
@@ -70,19 +73,65 @@ $(".check-2").on("click", function () {
     $(".check-2").html(states[index]);
 });
 
-$(".check-3").on("click", function () {
-    clickCount++;
-    const index = clickCount % states.length;
-    $(".check-3").html(states[index]);
-});
-
 
 // 回答アクション
 $(".answer").on("click", function () {
+    var $check0 = $(".check-0");
+    var $check1 = $(".check-1");
+    var $check2 = $(".check-2");
+    var text0 = $check0.text();
+    var text1 = $check1.text();
+    var text2 = $check2.text();
+    // 0 > 1 > 2 の順番
     if (numbers[0] == Math.max.apply(null, numbers)
-        && ".check-1".indexOf("高")) {
+        && text0.indexOf("高") == 0
+        && text1.indexOf("中") == 0
+        && numbers[2] == Math.min.apply(null, numbers)
+        && text2.indexOf("低") == 0
+    ){
         console.log("OK");
+        // 0 > > 2 > 1 の順番
+    } else if (numbers[0] == Math.max.apply(null, numbers)
+        && text0.indexOf("高") == 0
+        && text2.indexOf("中") == 0
+        && numbers[1] == Math.min.apply(null, numbers)
+        && text1.indexOf("低") == 0
+    ) {
+        console.log("OK");
+        // 1 > > 0 > 2 の順番
+    } else if (numbers[1] == Math.max.apply(null, numbers)
+        && text1.indexOf("高") == 0
+        && text0.indexOf("中") == 0
+        && numbers[2] == Math.min.apply(null, numbers)
+        && text2.indexOf("低") == 0
+    ) {
+        console.log("OK");
+        // 1 > > 2 > 0 の順番
+    }else if (numbers[1] == Math.max.apply(null, numbers)
+        && text1.indexOf("高") == 0
+        && text2.indexOf("中") == 0
+        && numbers[0] == Math.min.apply(null, numbers)
+        && text0.indexOf("低") == 0
+    ) {
+        console.log("OK");
+        // 2 > > 0 > 1 の順番
+    }else if (numbers[2] == Math.max.apply(null, numbers)
+        && text2.indexOf("高") == 0
+        && text0.indexOf("中") == 0
+        && numbers[1] == Math.min.apply(null, numbers)
+        && text1.indexOf("低") == 0
+    ) {
+        console.log("OK");
+        // 2 > > 1 > 0 の順番
+    }else if (numbers[2] == Math.max.apply(null, numbers)
+        && text2.indexOf("高") == 0
+        && text1.indexOf("中") == 0
+        && numbers[0] == Math.min.apply(null, numbers)
+        && text0.indexOf("低") == 0
+    ) {
+        console.log("OK");
+        // 不正解
     } else {
-        console.log("NO");
+        console.log("NG");
     }
     });
