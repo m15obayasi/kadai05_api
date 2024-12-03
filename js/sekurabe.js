@@ -2,19 +2,18 @@ $(".pokeTable, .answer, .checkTable,.restart").hide();
 
 let clickCount = 0;
 const states = ["大", "中", "小"];
-const dydoHeight = 18.3;
 
 // ここにポケモンの身長を格納
 let numbers = [];
 
 const prodacts = [
-    ["./img/dydo.png", 18.3],
-    ["./img/forklift.png", 23.5],
-    ["./img/luup.png", 10.1],
-    ["./img/printer.png", 12.1],
-    ["./img/washingMachine.png", 10.6],
-    ["./img/asimo.png", 13.0],
-    ["./img/chair.png", 8.7],
+    ["./img/dydo.png", 18.30],
+    ["./img/forklift.png", 23.50],
+    ["./img/luup.png", 10.10],
+    ["./img/printer.png", 12.10],
+    ["./img/washingMachine.png", 10.60],
+    ["./img/asimo.png", 13.00],
+    ["./img/chair.png", 8.70],
 ];
 
 let pBox = [];
