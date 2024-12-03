@@ -7,12 +7,31 @@ const dydoHeight = 18.3;
 // ここにポケモンの身長を格納
 let numbers = [];
 
+const prodacts = [
+    ["./img/dydo.png", 18.3],
+    ["./img/forklift.png", 23.5],
+    ["./img/luup.png", 10.1],
+    ["./img/printer.png", 12.1],
+    ["./img/washingMachine.png", 10.6],
+    ["./img/asimo.png", 13.0],
+    ["./img/chair.png", 8.7],
+];
+
+let pBox = [];
+
+function getProdacts() {
+    const random = Math.floor(Math.random() * prodacts.length);
+    pBox.unshift(prodacts[random][1]);
+    pBox.unshift(prodacts[random][0]);
+    numbers.unshift(pBox[1]);
+};
+
 // スタート！！
 $(".contents").on("click", function () {
     $(".pokeTable, .checkTable").show();
     $(".contents").hide();
     $(".answer").fadeIn(1000);
-    numbers.unshift(dydoHeight);
+    getProdacts();
     getPokemonA();
 });
 
@@ -44,10 +63,10 @@ function createPokemonA(pokemonA) {
     numbers.unshift(heightA);
 };
 
-// pokemonBをimage-1に掲載、身長を格納
+// pokemonBをimage-1に掲載、身長を格納、ついでに3つ目も掲載
 function createPokemonB(pokemonB) {
     $(".image-1").html(`<img src="${pokemonB.sprites.front_default}">`);
-    $(".image-2").html(`<img src="./img/dedo.png"></img>`);
+    $(".image-2").html(`<img src="${pBox[0]}">`);
     let heightB = pokemonB.height;
     numbers.splice(1, 0, heightB);
     console.log(numbers);
@@ -177,6 +196,6 @@ $(".restart").on("click", function () {
     $(".answer").show();
     $(".restart").hide();
     $(".check-0,.check-1,.check-2").html("ー");
-    numbers.unshift(dydoHeight);
     getPokemonA();
+    getProdacts();
 });
