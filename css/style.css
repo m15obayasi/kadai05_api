@@ -62,12 +62,13 @@ header{
     line-height: 40px;
 }
 
-.check-0:hover,.check-1:hover,.check-2:hover {
+.image-0 img:hover,.image-1 img:hover,.image-2 img:hover {
     cursor: pointer;
     font-size: 60px;
+    width: 200px;
 }
 
-.answer {
+.answer,.restart {
     margin-top: 10px;
     font-size: 32px;
     text-align: center;
@@ -81,8 +82,52 @@ header{
     color: #def1ff;
 }
 
-.answer:hover {
+.answer:hover,.restart:hover {
     background-color: #0A0F1A;
     color: #def1ff;
     cursor: pointer;
+}
+
+/* ローディング画面 */
+.loadTable{
+    display: none;
+    margin-top: 10px;
+    text-align: center;
+    padding: 20px;
+    border: solid 4px;
+    margin-right: 30px;
+    margin-left: 30px;
+    background-color: #647aa0;
+    height: 75px;
+    line-height: 75px;
+    color: #def1ff;
+}
+
+.loader {
+    position: fixed;
+    margin-top: 30px;
+    left: 50%;
+
+    width: 15px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+    0% {
+        box-shadow: 20px 0 #000, -20px 0 #0002;
+        background: #000
+    }
+    33% {
+        box-shadow: 20px 0 #000, -20px 0 #0002;
+        background: #0002
+    }
+    66% {
+        box-shadow: 20px 0 #0002, -20px 0 #000;
+        background: #0002
+    }
+    100% {
+        box-shadow: 20px 0 #0002, -20px 0 #000;
+        background: #000
+    }
 }
